@@ -24,4 +24,13 @@ internal class Day3Test {
             Day3().task1(input)
         )
     }
+
+    @Test
+    internal fun task2Example() {
+        val input = ("xmul(2,4)&mul[3,7]!^don't()_mul(5,5)+mul(32,64](mul(11,8)undo()?mul(8,5))\n")
+        assertEquals(
+            48,
+            Day3().task2(input)
+        )
+    }
 }
