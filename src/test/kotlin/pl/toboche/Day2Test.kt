@@ -46,4 +46,70 @@ internal class Day2Test {
             Day2().task2(input)
         )
     }
+
+    @Test
+    internal fun task2Example2() {
+        val input = ("61 64 67 66 68 67")
+            .lines()
+        assertEquals(
+            0,
+            Day2().task2(input)
+        )
+    }
+
+    @Test
+    internal fun task2Example3() {
+        val input = ("1 2 3 4 5 0 6")
+            .lines()
+        assertEquals(
+            1,
+            Day2().task2(input)
+        )
+    }
+
+    @Test
+    internal fun task2Example4() {
+        val input = ("1 2 3 4 5 0")
+            .lines()
+        assertEquals(
+            1,
+            Day2().task2(input)
+        )
+    }
+
+    @Test
+    internal fun task2Example5() {
+        val input = ("75 77 72 70 69\n" +
+                "28 28 27 26 23\n" +
+                "74 70 71 70 68 65\n" +
+                "20 16 14 12 10 8 7 6")
+            .lines()
+        assertEquals(
+            4,
+            Day2().task2(input)
+        )
+    }
+
+    @Test
+    internal fun task2Example6() {
+        val input = (
+                "74 70 71 70 68 65")
+            .lines()
+        assertEquals(
+            1,
+            Day2().task2(input)
+        )
+    }
+
+    @Test
+    internal fun task2() {
+        val input = File("src/test/resources/day2Task1.txt")
+            .readText()
+            .lines()
+
+        assertEquals(
+            301,
+            Day2().task2(input)
+        )
+    }
 }
