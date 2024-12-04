@@ -46,4 +46,26 @@ class Day4 {
         return count
     }
 
+    fun task2(input: List<String>): Int {
+        val matrix = input.map { it.toCharArray() }
+        var count = 0
+        val remaining1 = listOf('M', 'S')
+        val remaining2 = listOf('S', 'M')
+        for (i in matrix.indices) {
+            for (j in matrix[i].indices) {
+                if (matrix[i][j] == 'A') {
+                    val d1 =
+                        listOf(matrix.getOrNull(i - 1)?.getOrNull(j - 1), matrix.getOrNull(i + 1)?.getOrNull(j + 1))
+                    val d2 =
+                        listOf(matrix.getOrNull(i - 1)?.getOrNull(j + 1), matrix.getOrNull(i + 1)?.getOrNull(j - 1))
+
+                    val d11 = d1 == remaining1 || d1 == remaining2
+                    val d21 = d2 == remaining1 || d2 == remaining2
+                    count += if (d11 && d21) 1 else 0
+                }
+            }
+        }
+        return count
+    }
+
 }

@@ -35,4 +35,23 @@ internal class Day4Test {
             Day4().task1(input)
         )
     }
+
+    @Test
+    internal fun task2Example() {
+        val input = ("MMMSXXMASM\n" +
+                "MSAMXMSMSA\n" +
+                "AMXSXMAAMM\n" +
+                "MSAMASMSMX\n" +
+                "XMASAMXAMM\n" +
+                "XXAMMXXAMA\n" +
+                "SMSMSASXSS\n" +
+                "SAXAMASAAA\n" +
+                "MAMMMXMMMM\n" +
+                "MXMXAXMASX")
+            .lines()
+        assertEquals(
+            9,
+            Day4().task2(input)
+        )
+    }
 }
