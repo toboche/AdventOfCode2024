@@ -1,11 +1,11 @@
 package pl.toboche
 
 class Day7 {
-    fun task1(input: List<String>): Int {
-        return input.map {
+    fun task1(input: List<String>): Long {
+        return input.sumOf {
             val (expectedResultString, valuesString) = it.split(": ")
-            val expectedResult = expectedResultString.toInt()
-            val values = valuesString.split(' ').map { it.toInt() }
+            val expectedResult = expectedResultString.toLong()
+            val values = valuesString.split(' ').map { it.toLong() }
             var possibleOutcomes = listOf(values.first())
             for (value in values.drop(1)) {
                 possibleOutcomes = possibleOutcomes.flatMap { possibleResult ->
@@ -20,7 +20,7 @@ class Day7 {
             } else {
                 0
             }
-        }.sum()
+        }
     }
 
 }
