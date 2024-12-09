@@ -1,7 +1,7 @@
 package pl.toboche
 
 class Day9 {
-    fun task1(input: String): Int {
+    fun task1(input: String): Long {
         val freeSpaceIndices = mutableListOf<Int>()
         val occupiedIndices = mutableListOf<Pair<Int, Int>>()// index, id
         var currentMemoryIndex = 0
@@ -29,9 +29,9 @@ class Day9 {
                 newIndex to id
             }
         return (0 until occupiedIndices.size).map { i ->
-            newOccupiedIndices.find { it.first == i }?.second?.digitToChar()
-                ?: occupiedIndices.find { it.first == i }?.second?.digitToChar() ?: '.'
+            newOccupiedIndices.find { it.first == i }?.second
+                ?: occupiedIndices.find { it.first == i }?.second!!
         }
-            .withIndex().sumOf { it.index * it.value.digitToInt() }
+            .withIndex().sumOf { it.index.toLong() * it.value.toLong() }
     }
 }
