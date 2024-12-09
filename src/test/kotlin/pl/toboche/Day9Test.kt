@@ -33,4 +33,34 @@ internal class Day9Test {
             Day9().task1(input)
         )
     }
+
+    @Test
+    internal fun task2Example0() {
+        val input = ("12345")
+        assertEquals(
+            60,
+            Day9().task2(input)
+        )
+    }
+
+    @Test
+    internal fun task2Example() {
+        val input = ("2333133121414131402")
+        assertEquals(
+            2858,
+            Day9().task2(input)
+        )
+    }
+
+    @Test
+    internal fun task2() {
+        val input = File("src/test/resources/day9Task1.txt")
+            .readText()
+
+        assertEquals(
+            2756096,
+            Day9().task2(input)
+        )
+    }
+
 }
