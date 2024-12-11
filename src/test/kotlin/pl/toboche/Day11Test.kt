@@ -20,7 +20,19 @@ internal class Day11Test {
             .readText()
 
         assertEquals(
-            2756096,
+            217443,
             Day11().task1(input)
         )
-    }}
+    }
+
+    @Test
+    internal fun task2() {
+        val input = File("src/test/resources/day11Task1.txt")
+            .readText()
+
+        assertEquals(
+            2756096,
+            Day11().task1(input, 75)
+        )
+    }
+}

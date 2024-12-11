@@ -1,26 +1,53 @@
 package pl.toboche
 
 class Day11 {
-    fun task1(input: String): Int {
+//    fun task1(input: String): Int {
+//
+//        return input.split(" ")
+//            .map { it.toLong() }
+//            .map { number ->
+//                (0 until 25).fold(listOf(number)) { acc, i ->
+//                    acc.flatMap { cur ->
+//                        if (cur == 0L) {
+//                            listOf(1L)
+//                        } else {
+//                            val str = cur.toString()
+//                            if (str.count() % 2 == 0) {
+//                                listOf(str.take(str.count() / 2).toLong(), str.takeLast(str.count() / 2).toLong())
+//                            } else {
+//                                listOf(2024 * cur)
+//                            }
+//                        }
+//                    }
+//                }.count()
+//            }
+//            .sum()
+//    }
 
+
+    fun task1(input: String, count: Int = 25): Long {
         return input.split(" ")
             .map { it.toLong() }
             .map { number ->
-                (0 until 25).fold(listOf(number)) { acc, i ->
-                    acc.flatMap { cur ->
-                        if (cur == 0L) {
-                            listOf(1L)
+                (0 until count).fold(mapOf(number to 1L)) { oldMap, iteration ->
+                    val newMap = mutableMapOf<Long, Long>() //value, count
+                    oldMap.forEach { (num, cnt) ->
+                        if (num == 0L) {
+                            newMap[1L] = cnt + newMap.getOrDefault(1L, 0L)
                         } else {
-                            val str = cur.toString()
+                            val str = num.toString()
                             if (str.count() % 2 == 0) {
-                                listOf(str.take(str.count() / 2).toLong(), str.takeLast(str.count() / 2).toLong())
+                                val v1 = str.take(str.count() / 2).toLong()
+                                val v2 = str.takeLast(str.count() / 2).toLong()
+                                newMap[v1] = cnt + newMap.getOrDefault(v1, 0L)
+                                newMap[v2] = cnt + newMap.getOrDefault(v2, 0L)
                             } else {
-                                listOf(2024 * cur)
+                                newMap[2024 * num] = cnt + newMap.getOrDefault(2024 * num, 0L)
                             }
                         }
                     }
-                }.count()
-            }
-            .sum()
+                    newMap
+                }.entries.sumOf { it.value }
+            }.sum()
     }
 }
